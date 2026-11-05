@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Defs_Calorvia_AsIs" targetNamespace="http://calorvia.example/bpmn" exporter="A1 generator" exporterVersion="1.0">
+  <bpmn:collaboration id="Collab_1">
+    <bpmn:participant id="Part_Calorvia" name="Calorvía Servicios Técnicos — proceso AS-IS «De aviso a factura»" processRef="Proc_AsIs" />
+  </bpmn:collaboration>
+  <bpmn:process id="Proc_AsIs" name="De aviso a factura (AS-IS)" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_1">
+      <bpmn:lane id="L_cli" name="Cliente">
+        <bpmn:flowNodeRef>E_start</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T01</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T16</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G05</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>E_end</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="L_coo" name="Coordinación de servicio">
+        <bpmn:flowNodeRef>T02</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T03</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T04</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T05</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T06</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T15</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="L_tec" name="Técnico">
+        <bpmn:flowNodeRef>T07</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G02</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T08</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G03</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T09</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T10</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G04</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="L_adm" name="Administración y almacén">
+        <bpmn:flowNodeRef>T08b</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T11</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T13</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T14</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="E_start" name="Avería o incidencia detectada">
+      <bpmn:outgoing>F01</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="T01" name="Comunicar aviso (portal web, correo o teléfono)">
+      <bpmn:incoming>F01</bpmn:incoming>
+      <bpmn:outgoing>F02</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="T02" name="Registrar aviso en Cliensa CRM">
+      <bpmn:incoming>F02</bpmn:incoming>
+      <bpmn:outgoing>F03</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_3">
+        <bpmn:targetRef>DS1</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:task id="T03" name="Comprobar contrato y nivel de servicio en Cliensa">
+      <bpmn:incoming>F03</bpmn:incoming>
+      <bpmn:outgoing>F04</bpmn:outgoing>
+      <bpmn:property id="Prop_DIA_1" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DIA_1">
+        <bpmn:sourceRef>DS1</bpmn:sourceRef>
+        <bpmn:targetRef>Prop_DIA_1</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:task>
+    <bpmn:task id="T04" name="Crear orden de trabajo en ASIGNA 3.1 (tecleo)">
+      <bpmn:incoming>F04</bpmn:incoming>
+      <bpmn:outgoing>F05</bpmn:outgoing>
+      <bpmn:property id="Prop_DIA_2" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DIA_2">
+        <bpmn:sourceRef>DS1</bpmn:sourceRef>
+        <bpmn:targetRef>Prop_DIA_2</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataOutputAssociation id="DOA_5">
+        <bpmn:targetRef>DS2</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:task id="T05" name="Asignar técnico y enviarle los datos por WhatsApp">
+      <bpmn:incoming>F05</bpmn:incoming>
+      <bpmn:outgoing>F06</bpmn:outgoing>
+      <bpmn:property id="Prop_DIA_4" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DIA_4">
+        <bpmn:sourceRef>DS2</bpmn:sourceRef>
+        <bpmn:targetRef>Prop_DIA_4</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:task>
+    <bpmn:task id="T06" name="Confirmar cita al cliente por teléfono">
+      <bpmn:incoming>F06</bpmn:incoming>
+      <bpmn:outgoing>F07</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="T07" name="Desplazarse e intervenir">
+      <bpmn:incoming>F07</bpmn:incoming>
+      <bpmn:outgoing>F08</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="G02" name="¿Necesita repuesto?">
+      <bpmn:incoming>F08</bpmn:incoming>
+      <bpmn:outgoing>F09</bpmn:outgoing>
+      <bpmn:outgoing>F12</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="T08" name="Pedir repuesto al almacén por teléfono">
+      <bpmn:incoming>F09</bpmn:incoming>
+      <bpmn:outgoing>F10</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="T08b" name="Reservar y entregar repuesto (Contanor ERP)">
+      <bpmn:incoming>F10</bpmn:incoming>
+      <bpmn:outgoing>F11</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_6">
+        <bpmn:targetRef>DS3</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="G03">
+      <bpmn:incoming>F11</bpmn:incoming>
+      <bpmn:incoming>F12</bpmn:incoming>
+      <bpmn:outgoing>F13</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="T09" name="Cumplimentar parte en papel y recoger firma">
+      <bpmn:incoming>F13</bpmn:incoming>
+      <bpmn:outgoing>F14</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="T10" name="Enviar foto del parte (WhatsApp o correo)">
+      <bpmn:incoming>F14</bpmn:incoming>
+      <bpmn:outgoing>F15</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:parallelGateway id="G04">
+      <bpmn:incoming>F15</bpmn:incoming>
+      <bpmn:outgoing>F16</bpmn:outgoing>
+      <bpmn:outgoing>F20</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:task id="T11" name="Anotar recepción en la hoja «Partes pendientes»">
+      <bpmn:incoming>F16</bpmn:incoming>
+      <bpmn:outgoing>F17</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_7">
+        <bpmn:targetRef>DS4</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:task id="T13" name="Transcribir parte en Contanor ERP (tarifa según Cliensa)">
+      <bpmn:incoming>F17</bpmn:incoming>
+      <bpmn:outgoing>F18</bpmn:outgoing>
+      <bpmn:property id="Prop_DIA_8" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DIA_8">
+        <bpmn:sourceRef>DS5</bpmn:sourceRef>
+        <bpmn:targetRef>Prop_DIA_8</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataOutputAssociation id="DOA_10">
+        <bpmn:targetRef>DS6</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:task id="T14" name="Emitir factura y enviarla por correo">
+      <bpmn:incoming>F18</bpmn:incoming>
+      <bpmn:outgoing>F19</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_11">
+        <bpmn:targetRef>DS6</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:task id="T15" name="Actualizar estado del aviso en Cliensa (fin del día)">
+      <bpmn:incoming>F20</bpmn:incoming>
+      <bpmn:outgoing>F22</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_9">
+        <bpmn:targetRef>DS5</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:task id="T16" name="Recibir factura">
+      <bpmn:incoming>F19</bpmn:incoming>
+      <bpmn:outgoing>F21</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:parallelGateway id="G05">
+      <bpmn:incoming>F21</bpmn:incoming>
+      <bpmn:incoming>F22</bpmn:incoming>
+      <bpmn:outgoing>F23</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:endEvent id="E_end" name="Servicio facturado">
+      <bpmn:incoming>F23</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F01" sourceRef="E_start" targetRef="T01" />
+    <bpmn:sequenceFlow id="F02" sourceRef="T01" targetRef="T02" />
+    <bpmn:sequenceFlow id="F03" sourceRef="T02" targetRef="T03" />
+    <bpmn:sequenceFlow id="F04" sourceRef="T03" targetRef="T04" />
+    <bpmn:sequenceFlow id="F05" sourceRef="T04" targetRef="T05" />
+    <bpmn:sequenceFlow id="F06" sourceRef="T05" targetRef="T06" />
+    <bpmn:sequenceFlow id="F07" sourceRef="T06" targetRef="T07" />
+    <bpmn:sequenceFlow id="F08" sourceRef="T07" targetRef="G02" />
+    <bpmn:sequenceFlow id="F09" sourceRef="G02" targetRef="T08" name="Sí" />
+    <bpmn:sequenceFlow id="F10" sourceRef="T08" targetRef="T08b" />
+    <bpmn:sequenceFlow id="F11" sourceRef="T08b" targetRef="G03" />
+    <bpmn:sequenceFlow id="F12" sourceRef="G02" targetRef="G03" name="No" />
+    <bpmn:sequenceFlow id="F13" sourceRef="G03" targetRef="T09" />
+    <bpmn:sequenceFlow id="F14" sourceRef="T09" targetRef="T10" />
+    <bpmn:sequenceFlow id="F15" sourceRef="T10" targetRef="G04" />
+    <bpmn:sequenceFlow id="F16" sourceRef="G04" targetRef="T11" />
+    <bpmn:sequenceFlow id="F17" sourceRef="T11" targetRef="T13" />
+    <bpmn:sequenceFlow id="F18" sourceRef="T13" targetRef="T14" />
+    <bpmn:sequenceFlow id="F19" sourceRef="T14" targetRef="T16" />
+    <bpmn:sequenceFlow id="F20" sourceRef="G04" targetRef="T15" />
+    <bpmn:sequenceFlow id="F21" sourceRef="T16" targetRef="G05" />
+    <bpmn:sequenceFlow id="F22" sourceRef="T15" targetRef="G05" />
+    <bpmn:sequenceFlow id="F23" sourceRef="G05" targetRef="E_end" />
+    <bpmn:dataStoreReference id="DS1" name="Cliensa CRM (clientes, contratos, avisos)" />
+    <bpmn:dataStoreReference id="DS2" name="ASIGNA 3.1 (órdenes y agenda; PC de coordinación)" />
+    <bpmn:dataStoreReference id="DS3" name="Contanor ERP (almacén)" />
+    <bpmn:dataStoreReference id="DS4" name="Hoja «Partes pendientes» (Administración)" />
+    <bpmn:dataStoreReference id="DS5" name="Cliensa CRM (tarifa; estado del aviso)" />
+    <bpmn:dataStoreReference id="DS6" name="Contanor ERP (servicios, facturas)" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="Diagram_1">
+    <bpmndi:BPMNPlane id="Plane_1" bpmnElement="Collab_1">
+      <bpmndi:BPMNShape id="Part_Calorvia_di" bpmnElement="Part_Calorvia" isHorizontal="true">
+        <dc:Bounds x="30" y="30" width="2930" height="680" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="L_cli_di" bpmnElement="L_cli" isHorizontal="true">
+        <dc:Bounds x="60" y="30" width="2900" height="170" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="L_coo_di" bpmnElement="L_coo" isHorizontal="true">
+        <dc:Bounds x="60" y="200" width="2900" height="170" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="L_tec_di" bpmnElement="L_tec" isHorizontal="true">
+        <dc:Bounds x="60" y="370" width="2900" height="170" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="L_adm_di" bpmnElement="L_adm" isHorizontal="true">
+        <dc:Bounds x="60" y="540" width="2900" height="170" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="E_start_di" bpmnElement="E_start">
+        <dc:Bounds x="85" y="97" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="43.0" y="137" width="120" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T01_di" bpmnElement="T01">
+        <dc:Bounds x="150" y="79" width="120" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T02_di" bpmnElement="T02">
+        <dc:Bounds x="290" y="249" width="120" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T03_di" bpmnElement="T03">
+        <dc:Bounds x="450" y="249" width="120" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T04_di" bpmnElement="T04">
+        <dc:Bounds x="610" y="249" width="120" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T05_di" bpmnElement="T05">
+        <dc:Bounds x="770" y="249" width="120" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T06_di" bpmnElement="T06">
+        <dc:Bounds x="930" y="249" width="120" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T07_di" bpmnElement="T07">
+        <dc:Bounds x="1090" y="419" width="120" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G02_di" bpmnElement="G02" isMarkerVisible="true">
+        <dc:Bounds x="1250" y="430" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1215.0" y="484" width="120" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T08_di" bpmnElement="T08">
+        <dc:Bounds x="1340" y="419" width="120" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T08b_di" bpmnElement="T08b">
+        <dc:Bounds x="1500" y="589" width="120" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G03_di" bpmnElement="G03" isMarkerVisible="true">
+        <dc:Bounds x="1660" y="430" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T09_di" bpmnElement="T09">
+        <dc:Bounds x="1750" y="419" width="120" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T10_di" bpmnElement="T10">
+        <dc:Bounds x="1910" y="419" width="120" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G04_di" bpmnElement="G04">
+        <dc:Bounds x="2070" y="430" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T11_di" bpmnElement="T11">
+        <dc:Bounds x="2160" y="589" width="120" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T13_di" bpmnElement="T13">
+        <dc:Bounds x="2320" y="589" width="120" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T14_di" bpmnElement="T14">
+        <dc:Bounds x="2480" y="589" width="120" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T15_di" bpmnElement="T15">
+        <dc:Bounds x="2320" y="249" width="120" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T16_di" bpmnElement="T16">
+        <dc:Bounds x="2640" y="79" width="120" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G05_di" bpmnElement="G05">
+        <dc:Bounds x="2800" y="90" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="E_end_di" bpmnElement="E_end">
+        <dc:Bounds x="2890" y="97" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2848.0" y="137" width="120" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="F01_di" bpmnElement="F01">
+        <di:waypoint x="121" y="115.0" />
+        <di:waypoint x="150" y="115.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F02_di" bpmnElement="F02">
+        <di:waypoint x="270" y="115.0" />
+        <di:waypoint x="350.0" y="115.0" />
+        <di:waypoint x="350.0" y="249" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F03_di" bpmnElement="F03">
+        <di:waypoint x="410" y="285.0" />
+        <di:waypoint x="450" y="285.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F04_di" bpmnElement="F04">
+        <di:waypoint x="570" y="285.0" />
+        <di:waypoint x="610" y="285.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F05_di" bpmnElement="F05">
+        <di:waypoint x="730" y="285.0" />
+        <di:waypoint x="770" y="285.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F06_di" bpmnElement="F06">
+        <di:waypoint x="890" y="285.0" />
+        <di:waypoint x="930" y="285.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F07_di" bpmnElement="F07">
+        <di:waypoint x="1050" y="285.0" />
+        <di:waypoint x="1150.0" y="285.0" />
+        <di:waypoint x="1150.0" y="419" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F08_di" bpmnElement="F08">
+        <di:waypoint x="1210" y="455.0" />
+        <di:waypoint x="1250" y="455.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F09_di" bpmnElement="F09">
+        <di:waypoint x="1300" y="455.0" />
+        <di:waypoint x="1340" y="455.0" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1310.0" y="433.0" width="24" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F10_di" bpmnElement="F10">
+        <di:waypoint x="1460" y="455.0" />
+        <di:waypoint x="1560.0" y="455.0" />
+        <di:waypoint x="1560.0" y="589" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F11_di" bpmnElement="F11">
+        <di:waypoint x="1620" y="625.0" />
+        <di:waypoint x="1685.0" y="625.0" />
+        <di:waypoint x="1685.0" y="480" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F12_di" bpmnElement="F12">
+        <di:waypoint x="1275.0" y="480" />
+        <di:waypoint x="1275.0" y="522" />
+        <di:waypoint x="1685.0" y="522" />
+        <di:waypoint x="1685.0" y="480" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1470.0" y="506" width="24" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F13_di" bpmnElement="F13">
+        <di:waypoint x="1710" y="455.0" />
+        <di:waypoint x="1750" y="455.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F14_di" bpmnElement="F14">
+        <di:waypoint x="1870" y="455.0" />
+        <di:waypoint x="1910" y="455.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F15_di" bpmnElement="F15">
+        <di:waypoint x="2030" y="455.0" />
+        <di:waypoint x="2070" y="455.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F16_di" bpmnElement="F16">
+        <di:waypoint x="2120" y="455.0" />
+        <di:waypoint x="2220.0" y="455.0" />
+        <di:waypoint x="2220.0" y="589" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F17_di" bpmnElement="F17">
+        <di:waypoint x="2280" y="625.0" />
+        <di:waypoint x="2320" y="625.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F18_di" bpmnElement="F18">
+        <di:waypoint x="2440" y="625.0" />
+        <di:waypoint x="2480" y="625.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F19_di" bpmnElement="F19">
+        <di:waypoint x="2600" y="625.0" />
+        <di:waypoint x="2700.0" y="625.0" />
+        <di:waypoint x="2700.0" y="151" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F20_di" bpmnElement="F20">
+        <di:waypoint x="2095.0" y="430" />
+        <di:waypoint x="2095.0" y="285.0" />
+        <di:waypoint x="2320" y="285.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F21_di" bpmnElement="F21">
+        <di:waypoint x="2760" y="115.0" />
+        <di:waypoint x="2800" y="115.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F22_di" bpmnElement="F22">
+        <di:waypoint x="2440" y="285.0" />
+        <di:waypoint x="2825.0" y="285.0" />
+        <di:waypoint x="2825.0" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F23_di" bpmnElement="F23">
+        <di:waypoint x="2850" y="115.0" />
+        <di:waypoint x="2890" y="115.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="DS1_di" bpmnElement="DS1">
+        <dc:Bounds x="330" y="750" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="285" y="804" width="140" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DIA_1_di" bpmnElement="DIA_1">
+        <di:waypoint x="355.0" y="750" />
+        <di:waypoint x="510.0" y="321" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DIA_2_di" bpmnElement="DIA_2">
+        <di:waypoint x="355.0" y="750" />
+        <di:waypoint x="670.0" y="321" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DOA_3_di" bpmnElement="DOA_3">
+        <di:waypoint x="350.0" y="321" />
+        <di:waypoint x="355.0" y="750" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="DS2_di" bpmnElement="DS2">
+        <dc:Bounds x="650" y="750" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="605" y="804" width="140" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DIA_4_di" bpmnElement="DIA_4">
+        <di:waypoint x="675.0" y="750" />
+        <di:waypoint x="830.0" y="321" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DOA_5_di" bpmnElement="DOA_5">
+        <di:waypoint x="670.0" y="321" />
+        <di:waypoint x="675.0" y="750" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="DS3_di" bpmnElement="DS3">
+        <dc:Bounds x="1520" y="750" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1475" y="804" width="140" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DOA_6_di" bpmnElement="DOA_6">
+        <di:waypoint x="1560.0" y="661" />
+        <di:waypoint x="1545.0" y="750" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="DS4_di" bpmnElement="DS4">
+        <dc:Bounds x="2140" y="750" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2095" y="804" width="140" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DOA_7_di" bpmnElement="DOA_7">
+        <di:waypoint x="2220.0" y="661" />
+        <di:waypoint x="2165.0" y="750" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="DS5_di" bpmnElement="DS5">
+        <dc:Bounds x="2300" y="750" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2255" y="804" width="140" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DIA_8_di" bpmnElement="DIA_8">
+        <di:waypoint x="2325.0" y="750" />
+        <di:waypoint x="2380.0" y="661" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DOA_9_di" bpmnElement="DOA_9">
+        <di:waypoint x="2380.0" y="321" />
+        <di:waypoint x="2325.0" y="750" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="DS6_di" bpmnElement="DS6">
+        <dc:Bounds x="2500" y="750" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2455" y="804" width="140" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DOA_10_di" bpmnElement="DOA_10">
+        <di:waypoint x="2380.0" y="661" />
+        <di:waypoint x="2525.0" y="750" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DOA_11_di" bpmnElement="DOA_11">
+        <di:waypoint x="2540.0" y="661" />
+        <di:waypoint x="2525.0" y="750" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
