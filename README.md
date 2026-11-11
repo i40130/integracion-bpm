@@ -6,7 +6,7 @@ Máster Universitario en Gestión por Procesos (BPM) para la Transformación Dig
 Escuela de Ingeniería · Universidad Internacional de La Rioja (UNIR) · Edición otoño 2026 (PER 16654)
 
 [![Abrir el sitio](https://img.shields.io/badge/Abrir_el_sitio-i40130.github.io%2Fintegracion--bpm-0073B0?style=for-the-badge)](https://i40130.github.io/integracion-bpm/)
-[![Reto de clase 1](https://img.shields.io/badge/Reto_clase_1-Ibéricos_L%26M-0098CD?style=for-the-badge)](https://i40130.github.io/integracion-bpm/reto-ibericos/)
+[![Reto de clase](https://img.shields.io/badge/Reto_de_clase-Ibéricos_L%26M-0098CD?style=for-the-badge)](https://i40130.github.io/integracion-bpm/reto-ibericos/)
 
 ![Curso](https://img.shields.io/badge/curso-2026--27-0073B0)
 ![Actividad 1](https://img.shields.io/badge/A1-entrega_20%2F11%2F2026-C0392B)
@@ -27,7 +27,7 @@ Este repositorio publica la web de trabajo de la asignatura **Integración en lo
 | Qué | Dónde |
 |---|---|
 | **Dashboard de actividades** | **https://i40130.github.io/integracion-bpm/** |
-| Reto de la clase 1 · *El laberinto de Ibéricos L&M* | https://i40130.github.io/integracion-bpm/reto-ibericos/ |
+| Reto de clase · *El laberinto de Ibéricos L&M* (dos rondas) | https://i40130.github.io/integracion-bpm/reto-ibericos/ |
 
 - **Ordenador:** abrid el enlace en cualquier navegador actual. En Chrome o Edge podéis *instalarla* como aplicación (icono de instalar en la barra de direcciones).
 - **Móvil:** abrid el enlace y usad «Añadir a pantalla de inicio». La navegación pasa a la barra inferior.
@@ -41,7 +41,7 @@ Este repositorio publica la web de trabajo de la asignatura **Integración en lo
 | **Inicio** | Las tres actividades de un vistazo, fechas y vuestro progreso. |
 | **Actividad 1 · Bases de la integración** | Resumen, el caso completo, el método paso a paso, qué se entrega, la rúbrica con su simulador, la lista de comprobación y las descargas. |
 | **Actividad 2 · Actividad 3** | Se abren el día en que se presentan en clase. |
-| **Retos de clase** | Los retos que resolvemos en directo, con su plantilla. |
+| **Retos de clase** | Los retos que resolvemos en directo, con su plantilla. El de Ibéricos L&M tiene dos rondas: comprender (tema 1) y especificar requisitos (tema 2). |
 
 Vuestro progreso (pasos del método y lista de comprobación) se guarda solo en vuestro navegador. Nadie más lo ve, tampoco el profesor.
 
@@ -61,7 +61,7 @@ Las fechas oficiales son las del campus virtual. Si alguna vez no coinciden, man
 integracion-bpm/
 ├── index.html            Dashboard de actividades
 ├── a1/                   Ficheros de la Actividad 1 (enunciado, caso, plantilla, BPMN)
-├── reto-ibericos/        Reto de la clase 1 y su plantilla
+├── reto-ibericos/        Reto de clase (Ibéricos L&M) y su plantilla
 ├── assets/               Visor BPMN e iconos
 ├── manifest.webmanifest  Configuración para instalar la web
 └── sw.js                 Funcionamiento sin conexión
