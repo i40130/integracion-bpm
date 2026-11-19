@@ -41,7 +41,7 @@ Este repositorio publica la web de trabajo de la asignatura **Integración en lo
 | Sección | Contenido |
 |---|---|
 | **Inicio** | Las tres actividades de un vistazo, fechas y vuestro progreso. |
-| **Actividad 1 · Bases de la integración** | Resumen, el caso completo, el método paso a paso, qué se entrega, la rúbrica con su simulador, la lista de comprobación y las descargas. |
+| **Actividad 1 · Bases de la integración** | Resumen, el caso completo, el método paso a paso, qué se entrega, la rúbrica con su simulador, la lista de comprobación, las dudas frecuentes y las descargas. |
 | **Actividad 2 · Actividad 3** | Se abren el día en que se presentan en clase. |
 | **En clase · Retos de clase** | Los retos que resolvemos en directo, en salas, con su plantilla. El de Ibéricos L&M tiene dos rondas: comprender (tema 1) y especificar requisitos (tema 2). El de Brío es una sola cadena, de la petición al requisito, con un ejemplo resuelto. |
 | **En clase · Retos exprés** | Juegos cortos para comprobar un concepto en unos minutos, cada uno desde su navegador. No puntúan. |
