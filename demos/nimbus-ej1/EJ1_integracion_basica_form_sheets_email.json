@@ -1,0 +1,174 @@
+{
+  "name": "EJ1 · Integracion basica · Form -> Sheets -> Email",
+  "flow": [
+    {
+      "id": 1,
+      "module": "gateway:CustomWebHook",
+      "version": 1,
+      "parameters": {
+        "hook": 1,
+        "maxResults": 1
+      },
+      "mapper": {},
+      "metadata": {
+        "designer": {
+          "x": 0,
+          "y": 0,
+          "name": "Incidencia recibida (Webhook)"
+        },
+        "restore": {
+          "parameters": {
+            "hook": {
+              "label": "Webhook · Incidencias soporte",
+              "data": {
+                "editable": "true"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "hook",
+            "type": "hook:gateway-webhook",
+            "label": "Webhook",
+            "required": true
+          },
+          {
+            "name": "maxResults",
+            "type": "number",
+            "label": "Maximum number of results"
+          }
+        ],
+        "interface": [
+          { "name": "nombre", "type": "text", "label": "Nombre" },
+          { "name": "email", "type": "email", "label": "Email" },
+          { "name": "categoria", "type": "text", "label": "Categoria" },
+          { "name": "prioridad", "type": "text", "label": "Prioridad" },
+          { "name": "asunto", "type": "text", "label": "Asunto" },
+          { "name": "descripcion", "type": "text", "label": "Descripcion" }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "module": "google-sheets:addRow",
+      "version": 2,
+      "parameters": {
+        "__IMTCONN__": ""
+      },
+      "mapper": {
+        "from": "drive",
+        "mode": "select",
+        "values": {
+          "0": "{{\"INC-\" + formatDate(now; \"YYYYMMDD-HHmmss\")}}",
+          "1": "{{formatDate(now; \"DD/MM/YYYY HH:mm\")}}",
+          "2": "{{1.nombre}}",
+          "3": "{{1.email}}",
+          "4": "{{1.categoria}}",
+          "5": "{{1.prioridad}}",
+          "6": "{{1.asunto}}",
+          "7": "{{1.descripcion}}",
+          "8": "Nuevo"
+        },
+        "sheetId": "Incidencias",
+        "spreadsheetId": "",
+        "includesHeaders": true,
+        "insertDataOption": "INSERT_ROWS",
+        "valueInputOption": "USER_ENTERED",
+        "insertUnformatted": false
+      },
+      "metadata": {
+        "designer": {
+          "x": 300,
+          "y": 0,
+          "name": "Registrar incidencia (Google Sheets)"
+        },
+        "restore": {
+          "parameters": {
+            "__IMTCONN__": {
+              "label": "(Conecta tu cuenta de Google)",
+              "data": {}
+            }
+          },
+          "expect": {
+            "from": { "label": "My Drive" },
+            "mode": { "label": "Select from the list" },
+            "sheetId": { "label": "Incidencias" },
+            "includesHeaders": { "label": "Yes", "nested": [] },
+            "insertDataOption": { "label": "Insert rows" },
+            "valueInputOption": { "label": "User entered" }
+          }
+        },
+        "parameters": [
+          {
+            "name": "__IMTCONN__",
+            "type": "account:google",
+            "label": "Connection",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "module": "google-email:ActionSendEmail",
+      "version": 3,
+      "parameters": {
+        "__IMTCONN__": ""
+      },
+      "mapper": {
+        "to": ["{{1.email}}"],
+        "subject": "[Soporte] Hemos recibido tu incidencia: {{1.asunto}}",
+        "content": "<p>Hola {{1.nombre}},</p><p>Hemos registrado tu incidencia correctamente. Nuestro equipo de soporte se pondra en contacto contigo lo antes posible.</p><p><b>Resumen</b><br>Categoria: {{1.categoria}}<br>Prioridad: {{1.prioridad}}<br>Asunto: {{1.asunto}}<br>Descripcion: {{1.descripcion}}</p><p>Gracias por contactar con el Centro de Soporte.</p>",
+        "attachments": [],
+        "cc": [],
+        "bcc": [],
+        "replyTo": "",
+        "html": true
+      },
+      "metadata": {
+        "designer": {
+          "x": 600,
+          "y": 0,
+          "name": "Confirmar al cliente (Gmail)"
+        },
+        "restore": {
+          "parameters": {
+            "__IMTCONN__": {
+              "label": "(Conecta tu cuenta de Gmail)",
+              "data": {}
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "__IMTCONN__",
+            "type": "account:google-restricted",
+            "label": "Connection",
+            "required": true
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "instant": true,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "autoCommitTriggerLast": true,
+      "sequential": false,
+      "slots": null,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false,
+      "freshVariables": false
+    },
+    "designer": {
+      "orphans": []
+    },
+    "zone": "eu1.make.com"
+  }
+}

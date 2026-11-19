@@ -28,6 +28,7 @@ Este repositorio publica la web de trabajo de la asignatura **Integración en lo
 |---|---|
 | **Dashboard de actividades** | **https://i40130.github.io/integracion-bpm/** |
 | Reto de clase · *El laberinto de Ibéricos L&M* (dos rondas) | https://i40130.github.io/integracion-bpm/reto-ibericos/ |
+| Reto exprés · *¿Cómo viaja el dato?* (tema 3) | https://i40130.github.io/integracion-bpm/retos-expres/como-viaja-el-dato/ |
 
 - **Ordenador:** abrid el enlace en cualquier navegador actual. En Chrome o Edge podéis *instalarla* como aplicación (icono de instalar en la barra de direcciones).
 - **Móvil:** abrid el enlace y usad «Añadir a pantalla de inicio». La navegación pasa a la barra inferior.
@@ -41,7 +42,10 @@ Este repositorio publica la web de trabajo de la asignatura **Integración en lo
 | **Inicio** | Las tres actividades de un vistazo, fechas y vuestro progreso. |
 | **Actividad 1 · Bases de la integración** | Resumen, el caso completo, el método paso a paso, qué se entrega, la rúbrica con su simulador, la lista de comprobación y las descargas. |
 | **Actividad 2 · Actividad 3** | Se abren el día en que se presentan en clase. |
-| **Retos de clase** | Los retos que resolvemos en directo, con su plantilla. El de Ibéricos L&M tiene dos rondas: comprender (tema 1) y especificar requisitos (tema 2). |
+| **En clase · Retos de clase** | Los retos que resolvemos en directo, en salas, con su plantilla. El de Ibéricos L&M tiene dos rondas: comprender (tema 1) y especificar requisitos (tema 2). |
+| **En clase · Retos exprés** | Juegos cortos para comprobar un concepto en unos minutos, cada uno desde su navegador. No puntúan. |
+| **Demos de integración** | Las integraciones de Nimbus Solutions que se enseñan funcionando, con sus ficheros para montarlas en vuestra cuenta. |
+| **Modelos y plantillas** | Las plantillas de los modelos de clase (por ejemplo, el diagrama de componentes en draw.io), para abrir en el navegador o descargar. |
 
 Vuestro progreso (pasos del método y lista de comprobación) se guarda solo en vuestro navegador. Nadie más lo ve, tampoco el profesor.
 
@@ -62,6 +66,9 @@ integracion-bpm/
 ├── index.html            Dashboard de actividades
 ├── a1/                   Ficheros de la Actividad 1 (enunciado, caso, plantilla, BPMN)
 ├── reto-ibericos/        Reto de clase (Ibéricos L&M) y su plantilla
+├── retos-expres/         Retos exprés (un juego por carpeta)
+├── demos/               Demos de integración (una carpeta por demo)
+├── modelos/             Plantillas de los modelos de clase
 ├── assets/               Visor BPMN e iconos
 ├── manifest.webmanifest  Configuración para instalar la web
 └── sw.js                 Funcionamiento sin conexión
