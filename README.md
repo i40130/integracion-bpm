@@ -30,6 +30,7 @@ Este repositorio publica la web de trabajo de la asignatura **Integración en lo
 | Reto de clase · *El laberinto de Ibéricos L&M* (dos rondas) | https://i40130.github.io/integracion-bpm/reto-ibericos/ |
 | Reto de clase · *El torno de Brío* (una cadena completa) | https://i40130.github.io/integracion-bpm/reto-brio/ |
 | Reto exprés · *¿Cómo viaja el dato?* (tema 3) | https://i40130.github.io/integracion-bpm/retos-expres/como-viaja-el-dato/ |
+| Diagramas · *El torno de Brío* (el reto y la solución) | https://i40130.github.io/integracion-bpm/diagramas/torno-brio/ |
 
 - **Ordenador:** abrid el enlace en cualquier navegador actual. En Chrome o Edge podéis *instalarla* como aplicación (icono de instalar en la barra de direcciones).
 - **Móvil:** abrid el enlace y usad «Añadir a pantalla de inicio». La navegación pasa a la barra inferior.
@@ -47,6 +48,7 @@ Este repositorio publica la web de trabajo de la asignatura **Integración en lo
 | **En clase · Retos exprés** | Juegos cortos para comprobar un concepto en unos minutos, cada uno desde su navegador. No puntúan. |
 | **Demos de integración** | Las integraciones de Nimbus Solutions que se enseñan funcionando, con sus ficheros para montarlas en vuestra cuenta. |
 | **Modelos y plantillas** | Las plantillas de los modelos de clase (por ejemplo, el diagrama de componentes en draw.io), para abrir en el navegador o descargar. |
+| **Modelos · Diagramas** | Diagramas interactivos de los casos de clase. El primero, *Diagramas Torno Brío*: el reto y su solución en una sola página. |
 
 Vuestro progreso (pasos del método y lista de comprobación) se guarda solo en vuestro navegador. Nadie más lo ve, tampoco el profesor.
 
@@ -71,6 +73,7 @@ integracion-bpm/
 ├── retos-expres/         Retos exprés (un juego por carpeta)
 ├── demos/               Demos de integración (una carpeta por demo)
 ├── modelos/             Plantillas de los modelos de clase
+├── diagramas/           Diagramas interactivos (una carpeta por caso)
 ├── assets/               Visor BPMN e iconos
 ├── manifest.webmanifest  Configuración para instalar la web
 └── sw.js                 Funcionamiento sin conexión
