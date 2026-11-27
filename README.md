@@ -43,7 +43,8 @@ Este repositorio publica la web de trabajo de la asignatura **Integración en lo
 |---|---|
 | **Inicio** | Las tres actividades de un vistazo, fechas y vuestro progreso. |
 | **Actividad 1 · Bases de la integración** | Resumen, el caso completo, el método paso a paso, qué se entrega, la rúbrica con su simulador, la lista de comprobación, las dudas frecuentes y las descargas. |
-| **Actividad 2 · Actividad 3** | Se abren el día en que se presentan en clase. |
+| **Actividad 2 · Diseño de la solución de integración** | Resumen, el caso (fase 2: el encargo de diseño), el método paso a paso, qué se entrega, la rúbrica con sus errores duros y su simulador, la lista de comprobación y las descargas. |
+| **Actividad 3** | Se abre el día en que se presenta en clase. |
 | **En clase · Retos de clase** | Los retos que resolvemos en directo, en salas, con su plantilla. El de Ibéricos L&M tiene dos rondas: comprender (tema 1) y especificar requisitos (tema 2). El de Brío es una sola cadena, de la petición al requisito, con un ejemplo resuelto. |
 | **En clase · Retos exprés** | Juegos cortos para comprobar un concepto en unos minutos, cada uno desde su navegador. No puntúan. |
 | **Demos de integración** | Las integraciones de Nimbus Solutions que se enseñan funcionando, con sus ficheros para montarlas en vuestra cuenta. |
@@ -57,7 +58,7 @@ Vuestro progreso (pasos del método y lista de comprobación) se guarda solo en 
 | Actividad | Tipo | Puntos | Entrega |
 |---|---|:---:|---|
 | **A1** · Bases de la integración | Individual | 4 | **20/11/2026 · 23:59** |
-| **A2** · Diseño de la solución de integración | Grupal (3–4) | 4 | 08/01/2027 |
+| **A2** · Diseño de la solución de integración | Grupal (hasta 5) | 4 | **08/01/2027 · 23:59** |
 | **A3** · Prototipo de integración inteligente (IPA) | Grupal (3–4) | 5 | 26/02/2027 |
 
 Las fechas oficiales son las del campus virtual. Si alguna vez no coinciden, manda el campus. Fuera de plazo no se califica.
@@ -68,6 +69,7 @@ Las fechas oficiales son las del campus virtual. Si alguna vez no coinciden, man
 integracion-bpm/
 ├── index.html            Dashboard de actividades
 ├── a1/                   Ficheros de la Actividad 1 (enunciado, caso, plantilla, BPMN)
+├── a2/                   Ficheros de la Actividad 2 (enunciado, caso fase 2, plantilla)
 ├── reto-ibericos/        Reto de clase (Ibéricos L&M) y su plantilla
 ├── reto-brio/            Reto de clase (El torno de Brío) y su plantilla
 ├── retos-expres/         Retos exprés (un juego por carpeta)
